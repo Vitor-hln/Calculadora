@@ -1,23 +1,47 @@
 # Importações
-from tkinter import Tk, Frame, Button
-from tkinter import ttk
+from tkinter import Tk, Frame, Button, Label
 from tkinter.constants import RAISED, RIDGE
 from Style import cores
 
 # Janela principal
 janela = Tk()
-janela.title("Calculadora") # Define o titulo da janela
-janela.geometry("235x310")  # Define largura e comprimento respectivamente
-janela.config(bg = cores.fundo)
+janela.title("Calculadora") # Define o título da janela
+janela.geometry("235x310")  # Define largura e comprimento, respectivamente
+janela.config(bg=cores.fundo)
 
 # Frame - Display
-frame_tela = Frame(janela,width=235,height=60,bg=cores.cor5)
-frame_tela.grid(row=0, column=0) # posição do frame
+frame_tela = Frame(janela, width=235, height=60, bg=cores.cor5)
+frame_tela.grid(row=0, column=0) # Posição do frame
 
-frame_corpo = Frame(janela,width=235,height=268,bg=cores.fundo)
-frame_corpo.grid(row=1, column=0) # posição do frame
+frame_corpo = Frame(janela, width=235, height=268, bg=cores.fundo)
+frame_corpo.grid(row=1, column=0) # Posição do frame
 
-# Create Widgets
+# Variável que armazena o valor exibido no display
+v_display = ""
+
+# Label para o display
+display = Label(
+    frame_tela,
+    text="123456789",             # Valor inicial do display (vazio)
+    width=15,            # Largura do display
+    height=2,            # Altura do display
+    padx=7,              # Espaçamento interno na horizontal
+    relief="flat",       # Sem borda
+    anchor="e",          # Alinha o texto à direita
+    justify="right",     # Justifica o texto à direita
+    font=("ivy", 18, "bold"),  # Fonte do texto
+    bg=cores.cor5,       # Cor de fundo do display
+    fg=cores.cor1        # Cor do texto
+)
+display.place(x=0, y=0)  # Posiciona o display no frame
+
+
+
+def atualizar_display(valor):
+    global valor_display
+    valor_display += valor  # Adiciona o novo valor ao texto atual
+
+# Criação de Widgets
 b1 = Button(
     frame_corpo,
     text="C",
@@ -30,6 +54,7 @@ b1 = Button(
     overrelief=RIDGE, # fundo ao passar mouse
     activebackground=cores.cor6, # Fundo ao clicar
     activeforeground=cores.cor1  # Texto ao clicar
+
 
 
 )
@@ -45,8 +70,8 @@ b2 = Button(
     relief = RAISED,  # Borda em relevo
     overrelief = RIDGE,  # fundo ao passar mouse
     activebackground = cores.cor6,  # Fundo ao clicar
-    activeforeground = cores.cor1  # Texto ao clicar
-
+    activeforeground = cores.cor1,  # Texto ao clicar
+    command=lambda: atualizar_display("7")
 )
 b2.place(x=118,y=0)
 
