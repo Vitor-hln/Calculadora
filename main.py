@@ -41,7 +41,7 @@ def atualizar_display(valor):
         v_display += valor  # Adiciona o novo valor ao texto atual
         display.config(text=v_display) # atualiza o display
 
-def clear():
+def limpar():
     global v_display
     v_display=""
     display.config(text="")
@@ -54,7 +54,7 @@ def calcular():
         resultado = eval(v_display)
         v_display = str(resultado)  # Converte o resultado de volta para string
         display.config(text=v_display)  # Atualiza o display com o resultado
-    except Exception as e:
+    except Exception:
         v_display = ""  # Limpa o display em caso de erro
         display.config(text="Erro")  # Mostra "Erro" no display
 
@@ -72,7 +72,7 @@ b1 = Button(
     overrelief=RIDGE, # fundo ao passar mouse
     activebackground=cores.cor6, # Fundo ao clicar
     activeforeground=cores.cor1,  # Texto ao clicar
-    command=lambda: clear()
+    command=lambda: limpar()
 
 )
 b1.place(x=0,y=0)
