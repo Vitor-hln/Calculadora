@@ -37,13 +37,26 @@ display.place(x=0, y=0)  # Posiciona o display no frame
 
 def atualizar_display(valor):
     global v_display
-    v_display += valor  # Adiciona o novo valor ao texto atual
-    display.config(text=v_display) # atualiza o display
+    if valor:  # Verifica se valor não é None
+        v_display += valor  # Adiciona o novo valor ao texto atual
+        display.config(text=v_display) # atualiza o display
 
 def clear():
     global v_display
     v_display=""
     display.config(text="")
+
+# Função para avaliar a expressão no display
+def calcular():
+    global v_display
+    try:
+        # Avalia a expressão armazenada em v_display
+        resultado = eval(v_display)
+        v_display = str(resultado)  # Converte o resultado de volta para string
+        display.config(text=v_display)  # Atualiza o display com o resultado
+    except Exception as e:
+        v_display = ""  # Limpa o display em caso de erro
+        display.config(text="Erro")  # Mostra "Erro" no display
 
 
 # Widgets
@@ -321,7 +334,7 @@ b18=Button(
     overrelief = RIDGE,  # fundo ao passar mouse
     activebackground = cores.cor6,  # Fundo ao clicar
     activeforeground = cores.cor1,  # Texto ao clicar
-
+    command=calcular
 )
 b18.place(x=177,y=204)
 
