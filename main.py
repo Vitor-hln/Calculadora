@@ -22,7 +22,7 @@ v_display = ""
 # Label para o display
 display = Label(
     frame_tela,
-    text="123456789",             # Valor inicial do display (vazio)
+    text="",             # Valor inicial do display (vazio)
     width=15,            # Largura do display
     height=2,            # Altura do display
     padx=7,              # Espaçamento interno na horizontal
@@ -35,13 +35,18 @@ display = Label(
 )
 display.place(x=0, y=0)  # Posiciona o display no frame
 
-
-
 def atualizar_display(valor):
-    global valor_display
-    valor_display += valor  # Adiciona o novo valor ao texto atual
+    global v_display
+    v_display += valor  # Adiciona o novo valor ao texto atual
+    display.config(text=v_display) # atualiza o display
 
-# Criação de Widgets
+def clear():
+    global v_display
+    v_display=""
+    display.config(text="")
+
+
+# Widgets
 b1 = Button(
     frame_corpo,
     text="C",
@@ -53,9 +58,8 @@ b1 = Button(
     relief=RAISED, # Borda em relevo
     overrelief=RIDGE, # fundo ao passar mouse
     activebackground=cores.cor6, # Fundo ao clicar
-    activeforeground=cores.cor1  # Texto ao clicar
-
-
+    activeforeground=cores.cor1,  # Texto ao clicar
+    command=lambda: clear()
 
 )
 b1.place(x=0,y=0)
@@ -71,7 +75,7 @@ b2 = Button(
     overrelief = RIDGE,  # fundo ao passar mouse
     activebackground = cores.cor6,  # Fundo ao clicar
     activeforeground = cores.cor1,  # Texto ao clicar
-    command=lambda: atualizar_display("7")
+        command=lambda: atualizar_display("%")
 )
 b2.place(x=118,y=0)
 
@@ -86,8 +90,8 @@ b3 = Button(
     relief = RAISED,  # Borda em relevo
     overrelief = RIDGE,  # fundo ao passar mouse
     activebackground = cores.cor6,  # Fundo ao clicar
-    activeforeground = cores.cor1  # Texto ao clicar
-
+    activeforeground = cores.cor1,  # Texto ao clicar
+    command=lambda: atualizar_display("/")
 )
 b3.place(x=177,y=0)
 
@@ -101,8 +105,8 @@ b4 = Button(
     relief = RAISED,  # Borda em relevo
     overrelief = RIDGE,  # fundo ao passar mouse
     activebackground = cores.cor6,  # Fundo ao clicar
-    activeforeground = cores.cor1  # Texto ao clicar
-
+    activeforeground = cores.cor1,  # Texto ao clicar
+    command=lambda: atualizar_display("7")
 )
 b4.place(x=0,y=51)
 
@@ -116,8 +120,8 @@ b5 = Button(
     relief = RAISED,  # Borda em relevo
     overrelief = RIDGE,  # fundo ao passar mouse
     activebackground = cores.cor6,  # Fundo ao clicar
-    activeforeground = cores.cor1  # Texto ao clicar
-
+    activeforeground = cores.cor1,  # Texto ao clicar
+    command=lambda: atualizar_display("8")
 )
 b5.place(x=59,y=51)
 
@@ -131,8 +135,8 @@ b6 = Button(
     relief = RAISED,  # Borda em relevo
     overrelief = RIDGE,  # fundo ao passar mouse
     activebackground = cores.cor6,  # Fundo ao clicar
-    activeforeground = cores.cor1  # Texto ao clicar
-
+    activeforeground = cores.cor1,  # Texto ao clicar
+    command=lambda: atualizar_display("9")
 )
 b6.place(x=118,y=51)
 
@@ -142,12 +146,13 @@ b7 =Button(
     width=5,
     height=2,
     bg=cores.cor4,
+    fg=cores.cor2,
     font = ("ivy", 13, "bold"),  # Fonte do texto
     relief = RAISED,  # Borda em relevo
     overrelief = RIDGE,  # fundo ao passar mouse
     activebackground = cores.cor6,  # Fundo ao clicar
-    activeforeground = cores.cor1  # Texto ao clicar
-
+    activeforeground = cores.cor1,  # Texto ao clicar
+    command=lambda: atualizar_display("*")
 )
 b7.place(x=177,y=51)
 
@@ -161,8 +166,8 @@ b8 =Button(
     relief = RAISED,  # Borda em relevo
     overrelief = RIDGE,  # fundo ao passar mouse
     activebackground = cores.cor6,  # Fundo ao clicar
-    activeforeground = cores.cor1  # Texto ao clicar
-
+    activeforeground = cores.cor1,  # Texto ao clicar
+    command=lambda: atualizar_display("4")
 )
 b8.place(x=0,y=102)
 
@@ -176,8 +181,8 @@ b9 = Button(
     relief = RAISED,  # Borda em relevo
     overrelief = RIDGE,  # fundo ao passar mouse
     activebackground = cores.cor6,  # Fundo ao clicar
-    activeforeground = cores.cor1  # Texto ao clicar
-
+    activeforeground = cores.cor1,  # Texto ao clicar
+    command=lambda: atualizar_display("5")
 )
 b9.place(x=59,y=102)
 
@@ -191,8 +196,8 @@ b10 = Button(
     relief = RAISED,  # Borda em relevo
     overrelief = RIDGE,  # fundo ao passar mouse
     activebackground = cores.cor6,  # Fundo ao clicar
-    activeforeground = cores.cor1  # Texto ao clicar
-
+    activeforeground = cores.cor1,  # Texto ao clicar
+    command=lambda: atualizar_display("6")
 )
 b10.place(x=118,y=102)
 
@@ -202,12 +207,13 @@ b11 =Button(
     width=5,
     height=2,
     bg=cores.cor4,
+    fg=cores.cor2,
     font = ("ivy", 13, "bold"),  # Fonte do texto
     relief = RAISED,  # Borda em relevo
     overrelief = RIDGE,  # fundo ao passar mouse
     activebackground = cores.cor6,  # Fundo ao clicar
-    activeforeground = cores.cor1  # Texto ao clicar
-
+    activeforeground = cores.cor1,  # Texto ao clicar
+    command=lambda: atualizar_display("-")
 )
 b11.place(x=177,y=102)
 
@@ -221,8 +227,8 @@ b12 = Button(
     relief = RAISED,  # Borda em relevo
     overrelief = RIDGE,  # fundo ao passar mouse
     activebackground = cores.cor6,  # Fundo ao clicar
-    activeforeground = cores.cor1  # Texto ao clicar
-
+    activeforeground = cores.cor1,  # Texto ao clicar
+    command=lambda: atualizar_display("1")
 )
 b12.place(x=0,y=153)
 
@@ -236,8 +242,8 @@ b13 =Button(
     relief = RAISED,  # Borda em relevo
     overrelief = RIDGE,  # fundo ao passar mouse
     activebackground = cores.cor6,  # Fundo ao clicar
-    activeforeground = cores.cor1  # Texto ao clicar
-
+    activeforeground = cores.cor1,  # Texto ao clicar
+    command=lambda: atualizar_display("2")
 )
 b13.place(x=59,y=153)
 
@@ -251,8 +257,8 @@ b14 = Button(
     relief = RAISED,  # Borda em relevo
     overrelief = RIDGE,  # fundo ao passar mouse
     activebackground = cores.cor6,  # Fundo ao clicar
-    activeforeground = cores.cor1  # Texto ao clicar
-
+    activeforeground = cores.cor1,  # Texto ao clicar
+    command=lambda: atualizar_display("3")
 )
 b14.place(x=118,y=153)
 
@@ -261,13 +267,14 @@ b15= Button(
     text="+",
     width=5,
     height=2,
+    fg=cores.cor2,
     bg=cores.cor4,
     font = ("ivy", 13, "bold"),  # Fonte do texto
     relief = RAISED,  # Borda em relevo
     overrelief = RIDGE,  # fundo ao passar mouse
     activebackground = cores.cor6,  # Fundo ao clicar
-    activeforeground = cores.cor1  # Texto ao clicar
-
+    activeforeground = cores.cor1,  # Texto ao clicar
+    command=lambda: atualizar_display("+")
 )
 b15.place(x=177,y=153)
 
@@ -282,8 +289,8 @@ b16= Button(
     relief=RAISED, # Borda em relevo
     overrelief=RIDGE, # fundo ao passar mouse
     activebackground=cores.cor6, # Fundo ao clicar
-    activeforeground=cores.cor1  # Texto ao clicar
-
+    activeforeground=cores.cor1,  # Texto ao clicar
+    command=lambda: atualizar_display("0")
 )
 b16.place(x=0,y=204)
 
@@ -297,8 +304,8 @@ b17=Button(
     relief = RAISED,  # Borda em relevo
     overrelief = RIDGE,  # fundo ao passar mouse
     activebackground = cores.cor6,  # Fundo ao clicar
-    activeforeground = cores.cor1  # Texto ao clicar
-
+    activeforeground = cores.cor1,  # Texto ao clicar
+    command=lambda: atualizar_display(".")
 )
 b17.place(x=118,y=204)
 
@@ -308,14 +315,16 @@ b18=Button(
     width=5,
     height=2,
     bg=cores.cor4,
+    fg=cores.cor2,
     font = ("ivy", 13, "bold"),  # Fonte do texto
     relief = RAISED,  # Borda em relevo
     overrelief = RIDGE,  # fundo ao passar mouse
     activebackground = cores.cor6,  # Fundo ao clicar
-    activeforeground = cores.cor1  # Texto ao clicar
+    activeforeground = cores.cor1,  # Texto ao clicar
 
 )
 b18.place(x=177,y=204)
+
 
 
 janela.mainloop() # Executa a janela
